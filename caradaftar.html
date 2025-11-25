@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Daftar Trip - Suka Liburan ID</title>
+     <link rel="icon" href="https://image2url.com/images/1764001955746-a8310fb8-99bb-446c-8951-bc9a92538c68.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+            --accent-blue: #4285f4;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .logo img {
+            max-height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 115, 232, 0.8), rgba(13, 71, 161, 0.8)), url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb li {
+            margin: 0 8px;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Section */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.3rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .step-content ul {
+            margin-left: 18px;
+            color: var(--text-light);
+        }
+
+        .step-content li {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: var(--light-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 25px 0;
+        }
+
+        .info-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .info-box p {
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 35px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b0b0;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 15px;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 8px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .breadcrumb li {
+                font-size: 0.85rem;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            .section-title p {
+                font-size: 0.95rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .step-number {
+                align-self: center;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .step-content p {
+                font-size: 0.9rem;
+            }
+            
+            .step-content li {
+                font-size: 0.85rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .info-box {
+                padding: 15px;
+            }
+            
+            .info-box h4 {
+                font-size: 1rem;
+            }
+            
+            .info-box p {
+                font-size: 0.85rem;
+            }
+            
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-content {
+                gap: 25px;
+                margin-bottom: 25px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+            
+            .footer-column h3 {
+                font-size: 1.1rem;
+            }
+            
+            .footer-column p, .footer-column a {
+                font-size: 0.85rem;
+            }
+            
+            .social-links a {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title p {
+                font-size: 0.9rem;
+            }
+            
+            .step {
+                padding: 15px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                  <a href="#" class="logo">
+                    <img src="https://image2url.com/images/1764001955746-a8310fb8-99bb-446c-8951-bc9a92538c68.jpg" alt="Suka Liburan ID Logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="baduy2.html#home">Beranda</a></li>
+                    <li><a href="baduy2.html#about">Tentang Kami</a></li>
+                    <li><a href="baduy2.html#info">Info Trip</a></li>
+                    <li><a href="baduy2.html#registration">Daftar Sekarang</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Cara Daftar Trip Baduy</h1>
+            <p>Panduan lengkap untuk mendaftar open trip ke Baduy dengan mudah</p>
+            <ul class="breadcrumb">
+                <li><a href="baduy2.html">Beranda</a></li>
+                <li>></li>
+                <li>Cara Daftar Trip</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Langkah-langkah Pendaftaran</h2>
+                <p>Ikuti panduan di bawah ini untuk mendaftar trip ke Baduy dengan mudah dan cepat</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Pilih Tanggal Trip</h3>
+                        <p>Pilih tanggal keberangkatan yang sesuai dengan jadwal Anda dari pilihan yang tersedia.</p>
+                        <ul>
+                            <li>Lihat ketersediaan kuota pada tanggal yang diinginkan</li>
+                            <li>Pastikan tanggal sesuai dengan rencana perjalanan Anda</li>
+                            <li>Perhatikan musim dan cuaca saat memilih tanggal</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Isi Formulir Pendaftaran</h3>
+                        <p>Lengkapi formulir pendaftaran dengan data diri yang valid dan lengkap.</p>
+                        <ul>
+                            <li>Isi nama lengkap sesuai KTP</li>
+                            <li>Masukkan alamat email yang aktif</li>
+                            <li>Isi nomor telepon yang dapat dihubungi</li>
+                            <li>Tentukan jumlah peserta yang akan ikut</li>
+                            <li>Tambahkan catatan khusus jika diperlukan</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Lakukan Pembayaran DP</h3>
+                        <p>Lakukan pembayaran uang muka (DP) sebesar 50% dari total biaya trip.</p>
+                        <ul>
+                            <li>Transfer ke rekening BCA: 123-456-7890 (a.n. Suka Liburan ID)</li>
+                            <li>Transfer ke rekening Mandiri: 098-765-4321 (a.n. Suka Liburan ID)</li>
+                            <li>Simpan bukti transfer untuk konfirmasi</li>
+                        </ul>
+                        
+                        <div class="info-box">
+                            <h4>Informasi Penting</h4>
+                            <p>Booking dianggap sah setelah pembayaran DP diterima. Pastikan melakukan pembayaran dalam waktu 24 jam setelah pendaftaran untuk mengamankan tempat.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Konfirmasi Pembayaran</h3>
+                        <p>Konfirmasi pembayaran Anda melalui WhatsApp dengan mengirimkan bukti transfer.</p>
+                        <ul>
+                            <li>Kirim bukti transfer ke WhatsApp: +62 812-3456-7890</li>
+                            <li>Sertakan nama lengkap dan tanggal trip</li>
+                            <li>Tunggu konfirmasi dari admin kami</li>
+                        </ul>
+                        <a href="https://wa.me/6281234567890?text=Halo%20Baduy%20Adventure,%20saya%20ingin%20konfirmasi%20pembayaran%20DP" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Terima Konfirmasi Booking</h3>
+                        <p>Tunggu konfirmasi booking dari tim kami via email atau WhatsApp.</p>
+                        <ul>
+                            <li>Anda akan menerima email konfirmasi dalam 1x24 jam</li>
+                            <li>Simpan tiket atau bukti booking yang dikirim</li>
+                            <li>Periksa detail trip dan meeting point</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Pelunasan dan Persiapan Trip</h3>
+                        <p>Lakukan pelunasan pembayaran maksimal 7 hari sebelum keberangkatan dan persiapkan diri untuk trip.</p>
+                        <ul>
+                            <li>Lakukan pelunasan sesuai dengan instruksi yang diberikan</li>
+                            <li>Persiapkan perlengkapan trip sesuai packing list</li>
+                            <li>Baca kembali aturan dan tata tertib perjalanan</li>
+                            <li>Hadir di meeting point tepat waktu</li>
+                        </ul>
+                        <a href="booking.html" class="btn btn-outline">Lihat Aturan Booking</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9F--Y3A1GCi8qVtEDkPwockzJqRyqqxa3G1ORx5ZPEGbPcg/viewform" class="btn">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Suka Liburan ID</h3>
+                    <p>Penyedia layanan open trip ke Baduy dengan pengalaman lebih dari 5 tahun. Kami berkomitmen memberikan pengalaman wisata yang autentik dan berkesan.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sukaliburan.id/" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@sukaliburan.id" title="Tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@abdulpedia" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Wisata Baduy No. 123, Banten</p>
+                    <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@baduyadventure.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <a href="baduy2.html#home">Beranda</a>
+                    <a href="baduy2.html#about">Tentang Kami</a>
+                    <a href="baduy2.html#info">Info Trip</a>
+                    <a href="baduy2.html#registration">Daftar Sekarang</a>
+                    <a href="cara-daftar.html">Cara Daftar Trip</a>
+                    <a href="aturan-booking.html">Aturan Booking</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Suka Liburan ID. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <script>
+    // Auto update copyright year
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentYear = new Date().getFullYear();
+        const copyrightElement = document.querySelector('.copyright p');
+        if (copyrightElement) {
+            copyrightElement.innerHTML = `&copy; ${currentYear} Suka Liburan ID. All rights reserved.`;
+        }
+    });
+</script>
+
+</body>
+</html>

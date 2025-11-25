@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aturan Booking - Suka Liburan ID</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+            --accent-blue: #4285f4;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles - Updated to use image logo */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .logo img {
+            max-height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 115, 232, 0.8), rgba(13, 71, 161, 0.8)), url('https://image2url.com/images/1764002612928-30383887-335b-437a-8867-22e42be0725c.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb li {
+            margin: 0 8px;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Section */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .rules-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rule-category {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .rule-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rule-header i {
+            font-size: 1.3rem;
+        }
+
+        .rule-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .rule-content {
+            padding: 25px;
+        }
+
+        .rule-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rule-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .rule-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .rule-item p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .rule-item ul {
+            margin-left: 18px;
+            color: var(--text-light);
+        }
+
+        .rule-item li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .warning-box p {
+            color: #856404;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 35px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b0b0;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 15px;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 8px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .breadcrumb li {
+                font-size: 0.85rem;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            .section-title p {
+                font-size: 0.95rem;
+            }
+            
+            .rule-header {
+                padding: 15px 20px;
+            }
+            
+            .rule-header i {
+                font-size: 1.2rem;
+            }
+            
+            .rule-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .rule-content {
+                padding: 20px;
+            }
+            
+            .rule-item {
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+            }
+            
+            .rule-item h4 {
+                font-size: 1rem;
+            }
+            
+            .rule-item p {
+                font-size: 0.9rem;
+            }
+            
+            .rule-item li {
+                font-size: 0.85rem;
+            }
+            
+            .warning-box {
+                padding: 15px;
+            }
+            
+            .warning-box h4 {
+                font-size: 1rem;
+            }
+            
+            .warning-box p {
+                font-size: 0.85rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-content {
+                gap: 25px;
+                margin-bottom: 25px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+            
+            .footer-column h3 {
+                font-size: 1.1rem;
+            }
+            
+            .footer-column p, .footer-column a {
+                font-size: 0.85rem;
+            }
+            
+            .social-links a {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title p {
+                font-size: 0.9rem;
+            }
+            
+            .rule-header {
+                padding: 12px 15px;
+            }
+            
+            .rule-header i {
+                font-size: 1.1rem;
+            }
+            
+            .rule-header h3 {
+                font-size: 1.1rem;
+            }
+            
+            .rule-content {
+                padding: 15px;
+            }
+            
+            .rule-item h4 {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section - Updated to use image logo -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="baduy2.html" class="logo">
+                    <img src="https://image2url.com/images/1764001955746-a8310fb8-99bb-446c-8951-bc9a92538c68.jpg" alt="Suka Liburan ID Logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="baduy2.html#home">Beranda</a></li>
+                    <li><a href="baduy2.html#about">Tentang Kami</a></li>
+                    <li><a href="baduy2.html#info">Info Trip</a></li>
+                    <li><a href="baduy2.html#registration">Daftar Sekarang</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Aturan Booking Trip</h1>
+            <p>Ketentuan dan persyaratan yang berlaku untuk booking open trip ke Baduy</p>
+            <ul class="breadcrumb">
+                <li><a href="baduy2.html">Beranda</a></li>
+                <li>></li>
+                <li>Aturan Booking</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ketentuan dan Persyaratan</h2>
+                <p>Pastikan Anda membaca dan memahami aturan berikut sebelum melakukan booking</p>
+            </div>
+            
+            <div class="rules-container">
+                <div class="rule-category">
+                    <div class="rule-header">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Ketentuan Pembayaran</h3>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-item">
+                            <h4>Pembayaran DP (Down Payment)</h4>
+                            <p>Booking dianggap sah setelah pembayaran DP sebesar 50% dari total biaya trip diterima.</p>
+                            <ul>
+                                <li>DP harus dibayarkan dalam waktu 24 jam setelah pendaftaran</li>
+                                <li>Pembayaran dapat dilakukan via transfer bank</li>
+                                <li>Konfirmasi pembayaran harus disertai bukti transfer</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h4>Pelunasan Pembayaran</h4>
+                            <p>Pelunasan pembayaran harus dilakukan maksimal 7 hari sebelum tanggal keberangkatan.</p>
+                            <ul>
+                                <li>Pelunasan dapat dilakukan via transfer bank</li>
+                                <li>Konfirmasi pelunasan harus disertai bukti transfer</li>
+                                <li>Tiket dan detail trip akan dikirim setelah pelunasan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category">
+                    <div class="rule-header">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Kebijakan Pembatalan</h3>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-item">
+                            <h4>Pembatalan oleh Peserta</h4>
+                            <p>Kebijakan pembatalan mengacu pada waktu pembatalan yang dilakukan:</p>
+                            <ul>
+                                <li>Pembatalan > 30 hari sebelum trip: DP dapat refund 50%</li>
+                                <li>Pembatalan 15-30 hari sebelum trip: DP hangus 100%</li>
+                                <li>Pembatalan 7-14 hari sebelum trip: Biaya hangus 75%</li>
+                                <li>Pembatalan < 7 hari sebelum trip: Biaya hangus 100%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h4>Pembatalan oleh Penyelenggara</h4>
+                            <p>Jika trip dibatalkan oleh penyelenggara karena alasan tertentu:</p>
+                            <ul>
+                                <li>Peserta akan mendapatkan refund 100% dari biaya yang sudah dibayar</li>
+                                <li>Peserta dapat memilih untuk mengalihkan ke trip di tanggal lain</li>
+                                <li>Pemberitahuan pembatalan akan disampaikan minimal 7 hari sebelum trip</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <h4>Perhatian!</h4>
+                            <p>Pembatalan yang dilakukan karena force majeure (bencana alam, kerusuhan, dll) akan dikenakan biaya administrasi sebesar 25% dari total biaya trip.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category">
+                    <div class="rule-header">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Perubahan Jadwal</h3>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-item">
+                            <h4>Perubahan oleh Peserta</h4>
+                            <p>Perubahan jadwal trip dapat dilakukan dengan ketentuan:</p>
+                            <ul>
+                                <li>Perubahan jadwal maksimal 14 hari sebelum keberangkatan</li>
+                                <li>Biaya administrasi perubahan: Rp 100.000 per orang</li>
+                                <li>Perubahan tergantung ketersediaan kuota di tanggal baru</li>
+                                <li>Hanya dapat dilakukan satu kali perubahan</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h4>Perubahan oleh Penyelenggara</h4>
+                            <p>Penyelenggara berhak mengubah jadwal trip dengan alasan tertentu:</p>
+                            <ul>
+                                <li>Perubahan akan diinformasikan minimal 7 hari sebelumnya</li>
+                                <li>Peserta dapat memilih refund penuh atau mengikuti jadwal baru</li>
+                                <li>Perubahan hanya dilakukan untuk alasan keselamatan dan keamanan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category">
+                    <div class="rule-header">
+                        <i class="fas fa-user-friends"></i>
+                        <h3>Ketentuan Peserta</h3>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-item">
+                            <h4>Persyaratan Kesehatan</h4>
+                            <p>Peserta diwajibkan memenuhi persyaratan kesehatan berikut:</p>
+                            <ul>
+                                <li>Dalam kondisi sehat jasmani dan rohani</li>
+                                <li>Mampu berjalan kaki minimal 5 km per hari</li>
+                                <li>Tidak memiliki riwayat penyakit jantung, asma berat, atau epilepsi</li>
+                                <li>Hamil muda atau hamil tua tidak disarankan mengikuti trip</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h4>Dokumen yang Diperlukan</h4>
+                            <p>Peserta wajib membawa dokumen asli saat trip:</p>
+                            <ul>
+                                <li>KTP asli (WNI) atau Paspor asli (WNA)</li>
+                                <li>Kartu asuransi perjalanan (jika ada)</li>
+                                <li>Surat keterangan sehat dari dokter (untuk usia >60 tahun)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category">
+                    <div class="rule-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Lain-lain</h3>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-item">
+                            <h4>Kewajiban Peserta</h4>
+                            <p>Peserta diwajibkan mematuhi ketentuan berikut:</p>
+                            <ul>
+                                <li>Menghormati adat istiadat dan budaya masyarakat Baduy</li>
+                                <li>Mengikuti instruksi pemandu selama perjalanan</li>
+                                <li>Tidak merokok di area pemukiman dan hutan larangan</li>
+                                <li>Tidak membawa peralatan elektronik ke Baduy Dalam</li>
+                                <li>Membawa perlengkapan pribadi sesuai packing list</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h4>Tanggung Jawab Penyelenggara</h4>
+                            <p>Penyelenggara bertanggung jawab atas:</p>
+                            <ul>
+                                <li>Akomodasi dan transportasi selama trip</li>
+                                <li>Pemandu profesional yang berpengalaman</li>
+                                <li>Makanan selama trip sesuai itinerary</li>
+                                <li>Izin masuk kawasan Baduy</li>
+                                <li>P3K dasar selama perjalanan</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <h4>Peringatan!</h4>
+                            <p>Penyelenggara tidak bertanggung jawab atas kehilangan barang berharga, kecelakaan karena kelalaian peserta, atau hal-hal di luar kendali penyelenggara.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 20px; font-size: 0.95rem;">Dengan melakukan booking, Anda dianggap telah membaca, memahami, dan menyetujui semua aturan di atas.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9F--Y3A1GCi8qVtEDkPwockzJqRyqqxa3G1ORx5ZPEGbPcg/viewform" class="btn">Daftar Sekarang</a>
+                <a href="caradaftar.html" class="btn btn-outline">Lihat Cara Daftar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Suka Liburan ID</h3>
+                    <p>Penyedia layanan open trip ke Baduy dengan pengalaman lebih dari 5 tahun. Kami berkomitmen memberikan pengalaman wisata yang autentik dan berkesan.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sukaliburan.id/" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@sukaliburan.id" title="Tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@abdulpedia" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Wisata Baduy No. 123, Banten</p>
+                    <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@baduyadventure.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <a href="baduy2.html#home">Beranda</a>
+                    <a href="baduy2.html#about">Tentang Kami</a>
+                    <a href="baduy2.html#info">Info Trip</a>
+                    <a href="baduy2.html#registration">Daftar Sekarang</a>
+                    <a href="caradaftar.html">Cara Daftar Trip</a>
+                    <a href="booking.html">Aturan Booking</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Suka Liburan ID. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Auto update copyright year
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.querySelector('.copyright p');
+            if (copyrightElement) {
+                copyrightElement.innerHTML = `&copy; ${currentYear} Suka Liburan ID. All rights reserved.`;
+            }
+        });
+    </script>
+</body>
+</html>
