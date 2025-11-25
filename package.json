@@ -1,0 +1,9 @@
+{
+  "name": "sukaliburan-website",
+  "version": "1.0.0",
+  "description": "Static website for SukaliburanID",
+  "main": "baduy2.html",
+  "scripts": {
+    "build": "echo 'Building static site'"
+  }
+}
